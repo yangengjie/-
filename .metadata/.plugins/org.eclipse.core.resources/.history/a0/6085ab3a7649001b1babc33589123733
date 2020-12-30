@@ -1,0 +1,17 @@
+package com.ygj;
+
+public class LinkedListTest {
+
+	public static void main(String[] args) {
+		SingleLinkedList2<Integer> list = new SingleLinkedList2<Integer>();
+		list.add(11);
+		list.add(22);
+		list.add(33);
+		list.add(44);
+		list.add(55);
+		list.add(null);
+		
+		System.out.println(list.indexOf(55));
+	}
+
+}

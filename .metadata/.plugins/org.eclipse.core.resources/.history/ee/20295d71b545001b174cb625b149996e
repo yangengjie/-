@@ -1,0 +1,101 @@
+package com.ygj;
+
+public class ArrayList<E> {
+
+	/**
+	 * @return 返回数组中元素的个数
+	 */
+	public int size() {
+		return 0;
+	}
+
+	/**
+	 * @return 数组是否为空
+	 */
+	public boolean isEmpty() {
+		return false;
+	}
+
+	/**
+	 * @param element
+	 * @return 是否包含元素element
+	 */
+	public boolean contains(E element) {
+		return false;
+	}
+
+	/**
+	 * 添加元素
+	 * 
+	 * @param element
+	 */
+	public void add(E element) {
+
+	}
+
+	/**
+	 * 向指定位置添加元素
+	 * 
+	 * @param index
+	 * @param element
+	 */
+	public void add(int index, E element) {
+
+	}
+
+	/**
+	 * 获取指定位置的元素
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public E get(int index) {
+		return null;
+	}
+
+	/**
+	 * 设置index位置的元素
+	 * 
+	 * @param index
+	 * @param element
+	 */
+	public void set(int index, E element) {
+
+	}
+
+	/**
+	 * 删除指定位置的元素
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public E remove(int index) {
+		return null;
+	}
+
+	/**
+	 * 删除元素
+	 * 
+	 * @param element
+	 * @return
+	 */
+	public E remove(E element) {
+		return null;
+	}
+
+	/**
+	 * 返回指定元素的位置
+	 * @param element
+	 * @return
+	 */
+	public int indexOf(E element) {
+		return -1;
+	}
+	
+	/**
+	 * 清空元素
+	 */
+	public void clear() {
+		
+	}
+}

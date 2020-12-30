@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="com.ygj.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ygj.List"/>
+<fullyQualifiedTypeName name="javax.lang.model.element.Element"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.Sides"/>
+<fullyQualifiedTypeName name="com.ygj.LinkedList2"/>
+<fullyQualifiedTypeName name="com.ygj.LinkedList2.Node"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.ygj.LinkedList.Node"/>
+<fullyQualifiedTypeName name="com.ygj.LinkedList"/>
+<fullyQualifiedTypeName name="com.ygj.circle.SingleCircleLinkedList"/>
+<fullyQualifiedTypeName name="com.ygj.circle.SingleCircleLinkedList.Node"/>
+<fullyQualifiedTypeName name="java.security.acl.LastOwnerException"/>
+<fullyQualifiedTypeName name="com.ygj.AbstractList"/>
+<fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList"/>
+<fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList.Node"/>
+<fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList2.Node"/>
+<fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList2"/>
+<fullyQualifiedTypeName name="链表.ListNode"/>
+</qualifiedTypeNameHistroy>

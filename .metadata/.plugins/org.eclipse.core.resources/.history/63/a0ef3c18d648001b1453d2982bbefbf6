@@ -1,0 +1,19 @@
+package _989_数组形式的整数加法;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] a1 = { 1, 2, 6, 3, 0, 7, 1, 7, 1, 9, 7, 5, 6, 6, 4, 4, 0, 0, 6, 3 };
+		int k1 = 516;
+//		int[] a1 = { 1 ,5};
+//		int k1 = 806;
+		System.out.println(addToArrayForm(a1, k1));
+	}
+
+	
+}

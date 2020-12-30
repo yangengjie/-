@@ -1,0 +1,31 @@
+package _989_数组形式的整数加法;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] a1 = { 0 };
+		int k1 = 0;
+		System.out.println(addToArrayForm(a1, k1));
+	}
+
+	public static List<Integer> addToArrayForm(int[] A, int K) {
+		List<Integer> resultList = new ArrayList<>();
+		long result = 0;
+		for (int i = 0; i < A.length; i++) {
+			result += A[i] * Math.pow(10, (A.length - 1 - i));
+		}
+		result += K;
+		while (result >= 0) {
+			resultList.add(0, (int) (result % 10));
+			result = result / 10;
+			if(result==0)
+				break;
+		}
+		return resultList;
+	}
+}
