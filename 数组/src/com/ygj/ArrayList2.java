@@ -29,24 +29,17 @@ public class ArrayList2<E> extends AbstractList<E> {
 	public void add(int index, E element) {
 		checkIndexForAdd(index);
 		ensureCapacity(size + 1);
-
-		if (index == size) {
-			elements[index(size)] = element;
-		} else if (index == 0) {
+		if (index >= size >> 1) { // 向后移动
+			for (int i = size - 1; i >= index; i--) {
+				elements[index(i + 1)] = elements[index(i)];
+			}
+		} else { // 向前移动
 			front = index(-1);
-			elements[front] = element;
-		} else {
-			if (index >= size >> 1) { // 向后移动
-				for (int i = size - 1; i >= index; i--) {
-					elements[index(i + 1)] = elements[index(i)];
-				}
-			} else { // 向前移动
-				for (int i = 0; i < index; i++) {
-					front = index(i - 1);
-					elements[front] = elements[index(i)];
-				}
+			for (int i = 0; i < index; i++) {
+				elements[index(i)] = elements[index(i + 1)];
 			}
 		}
+		elements[index(index)] = element;
 		size++;
 	}
 
@@ -126,6 +119,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 				}
 				front++;
 			}
+			elements[index(index)]=null;
 		}
 
 		size--;
@@ -146,7 +140,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 				newElement[i] = elements[index(i)];
 			}
 			System.out.println(elements.length + "缩容为" + newCapacity);
-			front=0;
+			front = 0;
 			elements = newElement;
 		}
 	}
