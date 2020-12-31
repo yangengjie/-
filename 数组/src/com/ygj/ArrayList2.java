@@ -1,13 +1,13 @@
 package com.ygj;
 
 /**
- * ¶¯Ì¬Êı×éµÄÓÅ»¯
+ * åŠ¨æ€æ•°ç»„çš„ä¼˜åŒ–
  *
  */
 public class ArrayList2<E> extends AbstractList<E> {
 	private E[] elements;
 	private static final int DEFAULT_CAPACTITY = 10;
-	// ¼ÇÂ¼Êı×éÖĞÊ×ÔªËØµÄÎ»ÖÃ£¬Ä¬ÈÏÎª0
+	// è®°å½•æ•°ç»„ä¸­é¦–å…ƒç´ çš„ä½ç½®ï¼Œé»˜è®¤ä¸º0
 	private int front;
 
 	public ArrayList2() {
@@ -21,7 +21,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * ÏòÖ¸¶¨Î»ÖÃÌí¼ÓÔªËØ
+	 * å‘æŒ‡å®šä½ç½®æ·»åŠ å…ƒç´ 
 	 * 
 	 * @param index
 	 * @param element
@@ -29,21 +29,21 @@ public class ArrayList2<E> extends AbstractList<E> {
 	public void add(int index, E element) {
 		checkIndexForAdd(index);
 		ensureCapacity(size + 1);
-		if (index >= size >> 1) { // ÏòºóÒÆ¶¯
+		if (index >= size >> 1) { // å‘åç§»åŠ¨
 			for (int i = size - 1; i >= index; i--) {
 				elements[index(i + 1)] = elements[index(i)];
 			}
-		} else { // ÏòÇ°ÒÆ¶¯
-			front = index(-1);
+		} else { // å‘å‰ç§»åŠ¨
 			for (int i = 0; i < index; i++) {
-				elements[index(i)] = elements[index(i + 1)];
+				elements[index(i - 1)] = elements[index(i)];
 			}
+			front = index(-1);
 		}
 		elements[index(index)] = element;
 		size++;
 	}
 
-	// ĞŞÕıindex
+	// ä¿®æ­£index
 	private int index(int index) {
 		index += front;
 		if (index < 0)
@@ -54,14 +54,14 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * À©Èİ
+	 * æ‰©å®¹
 	 * 
 	 * @param capactity
 	 */
 	private void ensureCapacity(int capactity) {
 		if (capactity >= elements.length) {
 			int newCapacity = capactity + (capactity >> 1);
-			System.out.println("À©Èİ oldCapactity:" + elements.length + " newCapacity:" + newCapacity);
+			System.out.println("æ‰©å®¹ oldCapactity:" + elements.length + " newCapacity:" + newCapacity);
 			E[] newElements = (E[]) new Object[newCapacity];
 			for (int i = 0; i < size; i++) {
 				newElements[i] = elements[index(i)];
@@ -72,7 +72,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * »ñÈ¡Ö¸¶¨Î»ÖÃµÄÔªËØ
+	 * è·å–æŒ‡å®šä½ç½®çš„å…ƒç´ 
 	 * 
 	 * @param index
 	 * @return
@@ -83,7 +83,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * ÉèÖÃindexÎ»ÖÃµÄÔªËØ
+	 * è®¾ç½®indexä½ç½®çš„å…ƒç´ 
 	 * 
 	 * @param index
 	 * @param element
@@ -95,7 +95,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * É¾³ıÖ¸¶¨Î»ÖÃµÄÔªËØ
+	 * åˆ é™¤æŒ‡å®šä½ç½®çš„å…ƒç´ 
 	 * 
 	 * @param index
 	 * @return
@@ -103,25 +103,18 @@ public class ArrayList2<E> extends AbstractList<E> {
 	public E remove(int index) {
 		checkIndex(index);
 		E oldE = elements[index(index)];
-		if (index == 0) {
+		if (index >= size >> 1) { // å‘å‰ç§»åŠ¨
+			for (int i = index; i < size - 1; i++) {
+				elements[index(i)] = elements[index(i + 1)];
+			}
+			elements[index(size - 1)] = null;
+		} else { // å‘åç§»åŠ¨
+			for (int i = index; i > 0; i--) {
+				elements[index(i)] = elements[index(i - 1)];
+			}
 			elements[front] = null;
 			front = index(1);
-		} else if (index == size - 1) {
-			elements[index(size - 1)] = null;
-		} else {
-			if (index >= size >> 1) { // ÏòÇ°ÒÆ¶¯
-				for (int i = index; i < size - 1; i++) {
-					elements[index(i)] = elements[index(i + 1)];
-				}
-			} else { // ÏòºóÒÆ¶¯
-				for (int i = index; i > 0; i--) {
-					elements[index(i)] = elements[index(i - 1)];
-				}
-				front++;
-			}
-			elements[index(index)]=null;
 		}
-
 		size--;
 		if (size == 0)
 			front = 0;
@@ -130,7 +123,7 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * ËõÈİ£ºµ±size==capactity/2Ê±¾Í½øĞĞËõÈİ,ËõĞ¡ÎªÈİÁ¿µÄÒ»°ë
+	 * ç¼©å®¹ï¼šå½“size==capactity/2æ—¶å°±è¿›è¡Œç¼©å®¹,ç¼©å°ä¸ºå®¹é‡çš„ä¸€åŠ
 	 */
 	private void trim() {
 		int newCapacity = elements.length >> 1;
@@ -139,14 +132,14 @@ public class ArrayList2<E> extends AbstractList<E> {
 			for (int i = 0; i < size; i++) {
 				newElement[i] = elements[index(i)];
 			}
-			System.out.println(elements.length + "ËõÈİÎª" + newCapacity);
+			System.out.println(elements.length + "ç¼©å®¹ä¸º" + newCapacity);
 			front = 0;
 			elements = newElement;
 		}
 	}
 
 	/**
-	 * É¾³ıÔªËØ
+	 * åˆ é™¤å…ƒç´ 
 	 * 
 	 * @param element
 	 * @return
@@ -156,10 +149,10 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * ·µ»ØÖ¸¶¨ÔªËØµÄÎ»ÖÃ
+	 * è¿”å›æŒ‡å®šå…ƒç´ çš„ä½ç½®
 	 * 
 	 * @param element
-	 * @return ·µ»Ø-1£¬±íÊ¾Î´ÕÒµ½ÔªËØ
+	 * @return è¿”å›-1ï¼Œè¡¨ç¤ºæœªæ‰¾åˆ°å…ƒç´ 
 	 */
 	public int indexOf(E element) {
 		for (int i = 0; i < size; i++) {
@@ -175,14 +168,14 @@ public class ArrayList2<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * Çå¿ÕÔªËØ
+	 * æ¸…ç©ºå…ƒç´ 
 	 */
 	public void clear() {
 		for (E e : elements)
 			e = null;
 		size = 0;
 		front = 0;
-		// ËõÈİ
+		// ç¼©å®¹
 		if (elements != null && elements.length > DEFAULT_CAPACTITY)
 			elements = (E[]) new Object[DEFAULT_CAPACTITY];
 	}
