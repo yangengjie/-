@@ -1,8 +1,0 @@
-package Á´±í;
-
-public class _203_ÒÆ³ıÁ´±íÔªËØ {
-	public ListNode removeElements(ListNode head, int val) {
-		
-		return null;
-	}
-}
