@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
@@ -11,7 +10,6 @@
 <fullyQualifiedTypeName name="com.ygj.LinkedList2"/>
 <fullyQualifiedTypeName name="com.ygj.LinkedList2.Node"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="com.ygj.LinkedList.Node"/>
 <fullyQualifiedTypeName name="com.ygj.LinkedList"/>
 <fullyQualifiedTypeName name="com.ygj.circle.SingleCircleLinkedList"/>
@@ -23,7 +21,6 @@
 <fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList2.Node"/>
 <fullyQualifiedTypeName name="com.ygj.circle.CircleLinkedList2"/>
 <fullyQualifiedTypeName name="链表.ListNode"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.ygj.list.ArrayList"/>
 <fullyQualifiedTypeName name="com.ygj.list.List"/>
 <fullyQualifiedTypeName name="com.ygj.Stack"/>
@@ -32,20 +29,29 @@
 <fullyQualifiedTypeName name="java.lang.Character"/>
 <fullyQualifiedTypeName name="com.ygj.list.LinkedList"/>
 <fullyQualifiedTypeName name="com.ygj.Queue"/>
-<fullyQualifiedTypeName name="java.util.Stack"/>
-<fullyQualifiedTypeName name="javax.xml.soap.Node"/>
 <fullyQualifiedTypeName name="E"/>
 <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="com.ygj.printer.BinaryTreeInfo"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.ygj.BinarySearchTree"/>
 <fullyQualifiedTypeName name="com.ygj.printer.Printer"/>
 <fullyQualifiedTypeName name="java.util.function.IntPredicate"/>
 <fullyQualifiedTypeName name="com.ygj.printer.BinaryTrees"/>
-<fullyQualifiedTypeName name="com.ygj.BinarySearchTree.Node"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.ygj.Person"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
+<fullyQualifiedTypeName name="com.ygj.BinarySearchTree.Visitor"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.ygj.BinarySearchTree.Node"/>
+<fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
+<fullyQualifiedTypeName name="javax.xml.soap.Node"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Stack"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="二叉树.TreeNode"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
 </qualifiedTypeNameHistroy>

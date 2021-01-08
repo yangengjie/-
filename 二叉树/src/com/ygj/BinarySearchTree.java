@@ -43,6 +43,23 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 
 	// 清空元素
 	public void clear() {
+		size = 0;
+		root = null;
+	}
+
+	public void levelorderTraserval() {
+		if (root == null)
+			return;
+		Queue<Node<E>> queue = new LinkedList<>();
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			Node<E> node = queue.poll();
+			System.out.println(node.element);
+			if (node.left != null)
+				queue.offer(node.left);
+			if (node.right != null)
+				queue.offer(node.right);
+		}
 	}
 
 	// 添加元素
@@ -216,6 +233,151 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 		}
 	}
 
+	public int height(E element) {
+		return height(node(element));
+//		return height2(node(element));
+	}
+
+	// 通过元素查找节点
+	public Node<E> node(E element) {
+		if (root == null)
+			return null;
+		Node<E> node = root;
+		int cmp = 0;
+		while (node != null) {
+			cmp = compare(element, node.element);
+			if (cmp == 0)
+				return node;
+			if (cmp > 0)
+				node = node.right;
+			else
+				node = node.left;
+		}
+		return null;
+	}
+
+	private int height;// 树的高度
+	private int levelCount = 1;// 一层的元素数量
+	// 计算二叉树的高度 使用层序遍历的方式
+
+	private int height(Node<E> node) {
+		if (node == null)
+			return 0;
+		Queue<Node<E>> queue = new LinkedList<>();
+		queue.offer(node);
+		while (!queue.isEmpty()) {
+			Node<E> newNode = queue.poll();
+			levelCount--;
+			if (newNode.left != null)
+				queue.offer(newNode.left);
+			if (newNode.right != null)
+				queue.offer(newNode.right);
+			if (levelCount == 0) {
+				levelCount = queue.size();
+				height++;
+			}
+		}
+		return height;
+	}
+
+	private int height2(Node<E> node) {
+		if (node == null)
+			return 0;
+		return 1 + Math.max(height2(node.left), height2(node.right));
+	}
+
+	public boolean isCompleteTree() {
+		if (root == null)
+			return false;
+		boolean leaf = false;
+		Queue<Node<E>> queue = new LinkedList<>();
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			Node<E> node = queue.poll();
+			if (leaf && !node.isLeaf())
+				return false;
+
+			// 如果node.left!=null就入队
+			if (node.left != null)
+				queue.offer(node.left);
+			else { //
+				if (node.right != null)
+					return false;
+//				和下面叶子节点判断重复，可去掉
+//				else if (node.right == null)
+//					leaf = true;
+			}
+
+			if (node.right != null)
+				queue.offer(node.right);
+			else {
+//				if(node.left!=null) {
+//					leaf = true;
+//				}else if(node.left==null) { //重复
+//					leaf = true;
+//				}
+				// 如果遍历到的节点
+				// 上面判断重复,简化为
+				leaf = true;
+			}
+		}
+
+		return true;
+	}
+
+	public E precursor(E element) {
+		Node<E> node = precursor(node(element));
+		return node == null ? null : node.element;
+	}
+
+	// 获取指定节点的前驱结点
+	private Node<E> precursor(Node<E> node) {
+		if (node == null)
+			return node;
+		Node<E> leftNode = node.left;
+		// node.left.right.right....
+		if (leftNode != null) {
+			while (leftNode.right != null) {
+				leftNode = leftNode.right;
+			}
+			return leftNode;
+		}
+
+		// node.parent.parent....
+		while (node.parent != null && node == node.parent.left) {
+			node = node.parent;
+		}
+
+		// 走到这里条件 node.parent===null || node == node.parent.right
+		// 这两种情况下都会返回node.parent
+		return node.parent;
+	}
+
+	public E successor(E element) {
+		Node<E> node = successor(node(element));
+		return node == null ? null : node.element;
+	}
+
+	// 后继节点
+	private Node<E> successor(Node<E> node) {
+		if (node == null)
+			return null;
+		Node<E> rightNode = node.right;
+		// node.right.left.left....
+		if (rightNode != null) {
+			while (rightNode.left != null) {
+				rightNode = rightNode.left;
+			}
+			return rightNode;
+		}
+
+		// node.parent.parent...
+		while (node.parent != null && node != node.parent.left) {
+			node = node.parent;
+		}
+		return node.parent;
+	}
+
 	private int compare(E e1, E e2) {
 		if (comparator != null)
 			return comparator.compare(e1, e2);
@@ -246,6 +408,26 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 			this.element = element;
 			this.parent = parent;
 		}
+
+		public boolean isLeaf() {
+			return left == null && right == null;
+		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		toString(sb, root, "");
+		return sb.toString();
+	}
+
+	// 使用前序遍历方式打印二叉树
+	private void toString(StringBuilder sb, Node<E> node, String prefix) {
+		if (node == null)
+			return;
+		sb.append(prefix).append("【").append(node.element).append("】").append("\n");
+		toString(sb, node.left, prefix + "〖L〗");
+		toString(sb, node.right, prefix + "〖R〗");
 	}
 
 	@Override
