@@ -316,7 +316,6 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 //				}else if(node.left==null) { //重复
 //					leaf = true;
 //				}
-				// 如果遍历到的节点
 				// 上面判断重复,简化为
 				leaf = true;
 			}
@@ -372,7 +371,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 		}
 
 		// node.parent.parent...
-		while (node.parent != null && node != node.parent.left) {
+		while (node.parent != null && node == node.parent.right) {
 			node = node.parent;
 		}
 		return node.parent;
@@ -391,11 +390,46 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 
 	// 删除元素
 	public void remove(E element) {
+		remove(node(element));
+	}
+
+	private void remove(Node<E> node) {
+		if (node == null)
+			return;
+		// 删除度为2的节点
+		if (node.hasTwoChildren()) {
+			// 找到前驱节点
+			Node<E> precurNode = precursor(node);
+			// 用前驱节点的值覆盖要删除节点的值
+			node.element = precurNode.element;
+			// 删除前驱节点
+			node = precurNode;
+		}
+
+		// 删除的node节点的度为1或0
+		Node<E> child = node.left != null ? node.left : node.right;
+		if (child != null) { // 度为1的节点
+			// 使用子节点替代要删除节点的位置
+			child.parent = node.parent;
+			if (node.parent == null)
+				root = child;
+			else if (node == node.parent.left)
+				node.parent.left = child;
+			else if (node == node.parent.right)
+				node.parent.right = child;
+		} // 删除叶子节点
+		else if (node.parent == null)
+			root = null;
+		else if (node == node.parent.left)
+			node.parent.left = null;
+		else if (node == node.parent.right)
+			node.parent.right = null;
+		size--;
 	}
 
 	// 是否包含某个元素
 	public boolean contains(E element) {
-		return false;
+		return node(element) != null;
 	}
 
 	private static class Node<E> {
@@ -411,6 +445,10 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 
 		public boolean isLeaf() {
 			return left == null && right == null;
+		}
+
+		public boolean hasTwoChildren() {
+			return left != null && right != null;
 		}
 	}
 
