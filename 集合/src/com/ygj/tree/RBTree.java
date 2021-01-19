@@ -1,4 +1,4 @@
-package com.ygj;
+package com.ygj.tree;
 
 public class RBTree<E> extends BST<E> {
 	public static final boolean RED = true;

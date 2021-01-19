@@ -1,16 +1,14 @@
-package com.ygj;
+package com.ygj.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import com.ygj.BinaryTree.Node;
-import com.ygj.printer.BinaryTreeInfo;
 
 /**
  * 二叉树
  */
-public class BinaryTree<E> implements BinaryTreeInfo {
+public class BinaryTree<E>  {
 
 	protected int size;
 	// 根节点
@@ -304,28 +302,6 @@ public class BinaryTree<E> implements BinaryTreeInfo {
 			throw new IllegalArgumentException("element must not be null");
 	}
 
-	@Override
-	public Object root() {
-		return root;
-	}
-
-	@Override
-	public Object left(Object node) {
-		// TODO Auto-generated method stub
-		return ((Node<E>) node).left;
-	}
-
-	@Override
-	public Object right(Object node) {
-		// TODO Auto-generated method stub
-		return ((Node<E>) node).right;
-	}
-
-	@Override
-	public Object string(Object node) {
-		// TODO Auto-generated method stub
-		return node.toString();
-	}
 
 	protected static class Node<E> {
 		E element;

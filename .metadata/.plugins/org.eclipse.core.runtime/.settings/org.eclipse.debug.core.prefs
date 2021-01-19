@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="node.parent.left.element"/>\r\n</watchExpressions>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="node.sibling()"/>\r\n<expression enabled\="true" text\="node.parent.parent.right"/>\r\n<expression enabled\="true" text\="node2.key+&quot;_&quot;+node2.value"/>\r\n</watchExpressions>\r\n

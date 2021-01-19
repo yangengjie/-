@@ -1,4 +1,4 @@
-package com.ygj;
+package com.ygj.tree;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import java.util.Stack;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
-import com.ygj.printer.BinaryTreeInfo;
 
 /**
  * ¶þ²æËÑË÷Ê÷

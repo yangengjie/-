@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.lang.model.element.Element"/>
-<fullyQualifiedTypeName name="javax.print.attribute.standard.Sides"/>
-<fullyQualifiedTypeName name="com.ygj.LinkedList2"/>
-<fullyQualifiedTypeName name="com.ygj.LinkedList2.Node"/>
-<fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="com.ygj.LinkedList.Node"/>
 <fullyQualifiedTypeName name="com.ygj.LinkedList"/>
 <fullyQualifiedTypeName name="com.ygj.circle.SingleCircleLinkedList"/>
 <fullyQualifiedTypeName name="com.ygj.circle.SingleCircleLinkedList.Node"/>
@@ -58,6 +52,12 @@
 <fullyQualifiedTypeName name="java.sql.Blob"/>
 <fullyQualifiedTypeName name="com.ygj.BinaryTree"/>
 <fullyQualifiedTypeName name="com.ygj.printer.BinaryTrees"/>
-<fullyQualifiedTypeName name="com.ygj.BinaryTree.Node"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.ygj.RBTree"/>
+<fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.HTMLReader.ParagraphAction"/>
+<fullyQualifiedTypeName name="java.lang.Package"/>
+<fullyQualifiedTypeName name="java.awt.GradientPaint"/>
+<fullyQualifiedTypeName name="com.ygj.BinaryTree.Node"/>
+<fullyQualifiedTypeName name="com.ygj.RBTree.RBNode"/>
 </qualifiedTypeNameHistroy>
