@@ -6,26 +6,27 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="SortedSet" key="selection"/>
+		<item value="afterRemove" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
-		<item value="true" key="wrap"/>
-		<item value="false" key="wholeword"/>
+		<item value="false" key="wrap"/>
+		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="afterRemove"/>
+			<item value="precursor"/>
+			<item value="table"/>
+			<item value="table[]"/>
+			<item value="threshold ="/>
+			<item value="table ="/>
+			<item value="hash"/>
 			<item value="SortedSet"/>
 			<item value="get"/>
 			<item value="index"/>
 			<item value="iterator"/>
-			<item value="afterRemove"/>
 			<item value="RbNode"/>
 			<item value="char[]"/>
 			<item value="Visitor"/>
 			<item value="Comparator"/>
-			<item value="interface"/>
-			<item value="2147483647"/>
-			<item value="indexOf"/>
-			<item value="；"/>
-			<item value="length"/>
 		</list>
 		<list key="replacehistory">
 			<item value="; "/>
@@ -35,7 +36,7 @@
 		<item value="300" key="DIALOG_WIDTH"/>
 		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
 		<item value="410" key="DIALOG_HEIGHT"/>
-		<item value="898" key="DIALOG_X_ORIGIN"/>
-		<item value="209" key="DIALOG_Y_ORIGIN"/>
+		<item value="775" key="DIALOG_X_ORIGIN"/>
+		<item value="147" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
