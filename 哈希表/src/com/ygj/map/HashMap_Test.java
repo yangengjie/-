@@ -9,7 +9,7 @@ import javax.security.auth.kerberos.KerberosKey;
 import com.ygj.printer.BinaryTreeInfo;
 import com.ygj.printer.BinaryTrees;
 
-public class HashMap<K, V> implements Map<K, V> {
+public class HashMap_Test<K, V> implements Map<K, V> {
 	private int size;
 	public static final boolean RED = true;
 	public static final boolean BLACK = false;
@@ -17,7 +17,7 @@ public class HashMap<K, V> implements Map<K, V> {
 	private Node<K, V>[] table;
 	private static final int DEFAULT_CAPACITY = 1 << 4;
 
-	public HashMap() {
+	public HashMap_Test() {
 		table = new Node[DEFAULT_CAPACITY];
 	}
 
@@ -58,27 +58,16 @@ public class HashMap<K, V> implements Map<K, V> {
 		int cmp = 0;
 		Node<K, V> node = root;
 		Node<K, V> parent = root;
-		int h1 = key == null ? 0 : key.hashCode();
-		K k1 = key;
 		// 记录是否已经扫描过整棵树，避免重复扫描
 		boolean isSearched = false;
 		// 记录查找结果
 		Node<K, V> result = null;
+		K k1 = key;
+		int h1 = key == null ? 0 : key.hashCode();
 		while (node != null) {
-			// 由于在HashMap中并不要求key具有可比较性，该如何进行比较呢？
-//			cmp = compare(key, k1, node.key, node.hash);
 			K k2 = node.key;
-			int h2 = node.hash;
-			// 比较hash
-			if (h1 > h2) {
-				cmp = 1;
-			} else if (h1 < h2) {
-				cmp = -1;
-			} else if (Objects.equals(k1, k2)) {
+			if (Objects.equals(k1, k2)) {
 				cmp = 0;
-			} else if (k1 != null && k2 != null && k1.getClass() == k2.getClass() && k1 instanceof Comparable
-					&& (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
-
 			} else if (isSearched) {// 表示已经扫描过了
 				cmp = System.identityHashCode(k1) - System.identityHashCode(k2);
 			} else {// searched == false; 还没有扫描，然后再根据内存地址大小决定左右
@@ -361,26 +350,13 @@ public class HashMap<K, V> implements Map<K, V> {
 	}
 
 	private Node<K, V> node(Node<K, V> node, K k1) {
-		int h1 = k1 == null ? 0 : k1.hashCode();
 		int cmp = 0;
 		// 存储查找结果
 		Node<K, V> result = null;
 		while (node != null) {
-			int h2 = node.hash;
 			K k2 = node.key;
-			// 这里没有使用 int result=h1 - h2;然后比较result的正负
-			// 原因很简单：哈希值可能为负值，所以h1 - h2 当h2为负值是result=h1 + h2;可能会造成溢出。
-			// 那么比较就不准确了，这里直接比较h1和h2.
-			// 先比较hash值
-			if (h1 > h2)
-				cmp = 1;
-			else if (h1 < h2)
-				cmp = -1;
-			else if (Objects.equals(k1, k2)) {
+			if (Objects.equals(k1, k2)) {
 				cmp = 0;
-			} else if (k1 != null && k2 != null && k1.getClass().equals(k2.getClass()) && k1 instanceof Comparable
-					&& (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
-//				cmp = ((Comparable) k1).compareTo(k2);
 			} else {
 				// 哈希值相同，但不equals且不具有比较性，这时候没其他办法比较，只能去扫描整棵树
 				if (node.right != null && (result = node(node.right, k1)) != null) {

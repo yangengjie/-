@@ -54,7 +54,7 @@ public class RBTree<E> extends BST<E> {
 				if (parentBlack)
 					afterRemove(parent, null);
 			} else {
-				if (isBlack(sibling.right)) {
+				if (isBlack(sibling.right)) {//RL
 					rotateRight(sibling);
 					sibling = parent.right;
 				}

@@ -292,7 +292,7 @@ public class TreeMap<K, V> implements Map<K, V> {
 			return null;
 
 		Node<K, V> node = node(key);
-		Node<K, V> oldNode = node;
+		V oldValue = node.value;
 		if (node == null)
 			return null;
 
@@ -332,7 +332,7 @@ public class TreeMap<K, V> implements Map<K, V> {
 		}
 
 		size--;
-		return oldNode.value;
+		return oldValue;
 	}
 
 	private void afterRemove(Node<K, V> node, Node<K, V> replacement) {
@@ -376,7 +376,7 @@ public class TreeMap<K, V> implements Map<K, V> {
 			} else {
 
 				if (isBlack(sibling.right)) { // RL
-					rotateLeft(sibling);
+					rotateRight(sibling);
 					sibling = parent.right;
 				}
 				color(sibling, colorOf(parent));

@@ -1,4 +1,4 @@
-package com.ygj.map;
+package com.ygj.map.model;
 
 public class Person {
 	private String name;
