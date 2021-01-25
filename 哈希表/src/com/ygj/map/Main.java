@@ -1,8 +1,5 @@
 package com.ygj.map;
 
-import java.util.LinkedHashMap;
-import java.util.TreeMap;
-
 import com.ygj.file.FileInfo;
 import com.ygj.file.Files;
 import com.ygj.map.Map.Visitor;
@@ -105,15 +102,15 @@ public class Main {
 		for (int i = 1; i <= 3; i++) {
 			map.put(new Key(i), i + 5);
 		}
-		Asserts.test(map.size() == 19);
-		Asserts.test(map.get(new Key(1)) == 6);
-		Asserts.test(map.get(new Key(2)) == 7);
-		Asserts.test(map.get(new Key(3)) == 8);
-		Asserts.test(map.get(new Key(4)) == 4);
-		Asserts.test(map.get(new Key(5)) == null);
-		Asserts.test(map.get(new Key(6)) == null);
-		Asserts.test(map.get(new Key(7)) == null);
-		Asserts.test(map.get(new Key(8)) == 8);
+//		Asserts.test(map.size() == 19);
+//		Asserts.test(map.get(new Key(1)) == 6);
+//		Asserts.test(map.get(new Key(2)) == 7);
+//		Asserts.test(map.get(new Key(3)) == 8);
+//		Asserts.test(map.get(new Key(4)) == 4);
+//		Asserts.test(map.get(new Key(5)) == null);
+//		Asserts.test(map.get(new Key(6)) == null);
+//		Asserts.test(map.get(new Key(7)) == null);
+//		Asserts.test(map.get(new Key(8)) == 8);
 		map.traversal(new Visitor<Object, Integer>() {
 			@Override
 			public boolean visitor(Object key, Integer value, boolean color) {
@@ -134,12 +131,13 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		test1();
+//		test1();
 //		test2(new HashMap<>());
 //		test3(new HashMap<>());
 //		test4(new HashMap<>());
 //		test5(new HashMap<>());
-
+		
+		test4(new LinkedHashMap<Object, Integer>());
 	}
 
 }

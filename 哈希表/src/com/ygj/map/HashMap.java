@@ -16,6 +16,7 @@ public class HashMap<K, V> implements Map<K, V> {
 
 	private Node<K, V>[] table;
 	private static final int DEFAULT_CAPACITY = 1 << 4;
+	private static final float LOAD_FACTOR = 0.75f;
 
 	public HashMap() {
 		table = new Node[DEFAULT_CAPACITY];
@@ -41,14 +42,109 @@ public class HashMap<K, V> implements Map<K, V> {
 		}
 	}
 
+	/**
+	 * 扩容
+	 */
+	private void resize() {
+		// 装填因子小于等于0.75不进行扩容
+		if (size * 1.0f / table.length <= LOAD_FACTOR)
+			return;
+
+		Node<K, V>[] oldTable = table;
+		table = new Node[table.length << 1];
+		Queue<Node<K, V>> queue = new LinkedList<>();
+		for (int i = 0; i < oldTable.length; i++) {
+			Node<K, V> root = oldTable[i];
+			if (root == null)
+				continue;
+			queue.offer(root);
+			while (!queue.isEmpty()) {
+				Node<K, V> node = queue.poll();
+
+				if (node.left != null)
+					queue.offer(node.left);
+
+				if (node.right != null)
+					queue.offer(node.right);
+
+				// 挪动节点到新的哈希表中，
+				// 注意挪动代码需要放到最后，否则会导致获得node.left和node.right是错乱的
+				moveNode(node);
+			}
+
+		}
+	}
+
+	/**
+	 * 挪动节点到新的哈希表中 类似于添加元素的逻辑
+	 * 
+	 * @param node
+	 */
+	private void moveNode(Node<K, V> newNode) {
+		// 注意重置newNode的属性
+		newNode.parent = null;
+		newNode.left = null;
+		newNode.right = null;
+		newNode.color = RED;
+
+		// 首先计算出添加到那个桶中
+		int index = index(newNode);
+		// 取出对应index位置的红黑树的根节点
+		Node<K, V> root = table[index];
+		// 说明添加进来的是根节点
+		if (root == null) {
+			root = newNode;
+			table[index] = root;
+			afterPut(root);
+			return;
+		}
+
+		// 添加到红黑树上
+		Node<K, V> node = root;
+		Node<K, V> parent = root;
+		int cmp = 0;
+		int h1 = newNode.hash;
+		K k1 = newNode.key;
+
+		while (node != null) {
+			int h2 = node.hash;
+			K k2 = node.key;
+			parent = node;
+			if (h1 > h2) {
+				cmp = 1;
+			} else if (h1 < h2) {
+				cmp = -1;
+			} else if (k1 != null && k2 != null && k1.getClass() == k2.getClass() && k1 instanceof Comparable
+					&& (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+			} else {
+				cmp = System.identityHashCode(k1) - System.identityHashCode(k2);
+			}
+
+			if (cmp > 0)
+				node = node.right;
+			else if (cmp < 0)
+				node = node.left;
+		}
+
+		// 记得维护parent信息
+		newNode.parent = parent;
+		if (cmp > 0)
+			parent.right = newNode;
+		else if (cmp < 0)
+			parent.left = newNode;
+
+		afterPut(newNode);
+	}
+
 	@Override
 	public V put(K key, V value) {
+		resize();
 		// 添加之前，需要使用key来计算得到索引
 		int index = index(key);
 		// 数组中存入的元素是不同红黑树的根节点，取出index位置对应的红黑树的根节点
 		Node<K, V> root = table[index];
 		if (root == null) { // 添加的第一个节点
-			root = new Node<>(key, value, null);
+			root = createNode(key, value, null);
 			table[index] = root;
 			size++;
 			afterPut(root);
@@ -107,7 +203,7 @@ public class HashMap<K, V> implements Map<K, V> {
 			}
 		}
 
-		Node<K, V> newNode = new Node<>(key, value, parent);
+		Node<K, V> newNode = createNode(key, value, parent);
 		if (cmp > 0) {
 			parent.right = newNode;
 		} else if (cmp < 0) {
@@ -116,6 +212,10 @@ public class HashMap<K, V> implements Map<K, V> {
 		afterPut(newNode);
 		size++;
 		return null;
+	}
+
+	protected Node<K, V> createNode(K key, V value, Node<K, V> parent) {
+		return new Node<>(key, value, parent);
 	}
 
 	@Override
@@ -129,6 +229,7 @@ public class HashMap<K, V> implements Map<K, V> {
 		Node<K, V> node = node(key);
 		if (node == null)
 			return null;
+		Node<K, V> willNode = node;
 		V oldValue = node.value;
 		if (node.hasTwoChildren()) { // 度为2的节点
 			// 找到前驱节点后继节点 然后覆盖节点的值
@@ -154,7 +255,7 @@ public class HashMap<K, V> implements Map<K, V> {
 				// 根节点
 				table[index] = replacement;
 			}
-			afterRemove(node, replacement);
+			fixAfterRemove(node, replacement);
 		} else if (node.parent == null) {
 			table[index] = null;
 		} else {
@@ -164,10 +265,13 @@ public class HashMap<K, V> implements Map<K, V> {
 			} else if (node.isRightChild()) {
 				node.parent.right = null;
 			}
-			afterRemove(node, null);
+			fixAfterRemove(node, null);
 		}
 
 		size--;
+
+		afterRemove(willNode, node);
+
 		return oldValue;
 	}
 
@@ -255,7 +359,17 @@ public class HashMap<K, V> implements Map<K, V> {
 		}
 	}
 
-	private void afterRemove(Node<K, V> node, Node<K, V> replacement) {
+	/**
+	 * 删除节点后维护双向链表中的元素
+	 * 
+	 * @param willNode 要删除的节点
+	 * @param node     真正删除的节点
+	 */
+	protected void afterRemove(Node<K, V> willNode, Node<K, V> node) {
+
+	}
+
+	private void fixAfterRemove(Node<K, V> node, Node<K, V> replacement) {
 
 		// 如果删除的红色节点 不需处理
 		if (isRed(node))
@@ -292,7 +406,7 @@ public class HashMap<K, V> implements Map<K, V> {
 				red(sibling);
 				// 父节点向下合并，可能还会造成下溢，将parent作为删除的节点处理
 				if (isParentBlack)
-					afterRemove(parent, null);
+					fixAfterRemove(parent, null);
 			} else {
 
 				if (isBlack(sibling.right)) { // RL
@@ -318,7 +432,7 @@ public class HashMap<K, V> implements Map<K, V> {
 				red(sibling);
 				// 父节点向下合并，可能还会造成下溢，将parent作为删除的节点处理
 				if (isParentBlack)
-					afterRemove(parent, null);
+					fixAfterRemove(parent, null);
 			} else {
 
 				if (isBlack(sibling.left)) { // LR
@@ -584,7 +698,7 @@ public class HashMap<K, V> implements Map<K, V> {
 		return node;
 	}
 
-	private static class Node<K, V> {
+	protected static class Node<K, V> {
 		K key;
 		V value;
 		int hash;
