@@ -6,12 +6,14 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="createNode" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="createNode"/>
+			<item value="fixAfterRemove"/>
 			<item value="System.out.println"/>
 			<item value="oldNode"/>
 			<item value="afterRemove"/>
@@ -25,8 +27,6 @@
 			<item value="get"/>
 			<item value="index"/>
 			<item value="iterator"/>
-			<item value="RbNode"/>
-			<item value="char[]"/>
 		</list>
 		<list key="replacehistory">
 			<item value="; "/>
