@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.lang.InternalError"/>
 <fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
 <fullyQualifiedTypeName name="java.lang.ProcessBuilder.Redirect"/>
@@ -19,7 +18,6 @@
 <fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="javax.security.auth.kerberos.KerberosKey"/>
 <fullyQualifiedTypeName name="com.ygj.printer.BinaryTrees"/>
-<fullyQualifiedTypeName name="com.ygj.printer.BinaryTreeInfo"/>
 <fullyQualifiedTypeName name="java.util.Objects"/>
 <fullyQualifiedTypeName name="com.mj.Asserts"/>
 <fullyQualifiedTypeName name="com.ygj.map.model.SubKey2"/>
@@ -55,9 +53,11 @@
 <fullyQualifiedTypeName name="com.ygj.map.LinkedHashMap"/>
 <fullyQualifiedTypeName name="com.ygj.map.Map"/>
 <fullyQualifiedTypeName name="com.ygj.map.Map.Visitor"/>
-<fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="com.ygj.printer.BinaryTreeInfo"/>
+<fullyQualifiedTypeName name="com.ygj.heap.BinaryHeap"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
 </qualifiedTypeNameHistroy>
