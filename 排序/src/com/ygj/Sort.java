@@ -8,6 +8,7 @@ import com.ygj.cmp.BubbleSort3;
 import com.ygj.cmp.HeapSort;
 import com.ygj.cmp.InsertionSort1;
 import com.ygj.cmp.InsertionSort2;
+import com.ygj.cmp.InsertionSort3;
 import com.ygj.cmp.SelectionSort;
 
 public abstract class Sort<T extends Comparable<T>> implements Comparable<Sort> {
@@ -78,7 +79,7 @@ public abstract class Sort<T extends Comparable<T>> implements Comparable<Sort> 
 			return false;
 		if (this instanceof BubbleSort1 || this instanceof BubbleSort2 || this instanceof BubbleSort3)
 			return true;
-		if (this instanceof InsertionSort1 || this instanceof InsertionSort2)
+		if (this instanceof InsertionSort1 || this instanceof InsertionSort2 || this instanceof InsertionSort3)
 			return true;
 		else
 			return false;

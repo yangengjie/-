@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+import com.ygj.cmp.BinarySearch;
 import com.ygj.cmp.BubbleSort1;
 import com.ygj.cmp.BubbleSort2;
 import com.ygj.cmp.BubbleSort3;
 import com.ygj.cmp.HeapSort;
 import com.ygj.cmp.InsertionSort1;
 import com.ygj.cmp.InsertionSort2;
+import com.ygj.cmp.InsertionSort3;
 import com.ygj.cmp.SelectionSort;
 import com.ygj.tools.Asserts;
 import com.ygj.tools.Integers;
@@ -26,7 +28,9 @@ public class Main {
 				new BubbleSort3(), 
 				new HeapSort(), 
 				new SelectionSort(),
-				new InsertionSort2());
+				new InsertionSort2(),
+				new InsertionSort3());
+
 	}
 
 	static void testSort(Integer[] array, Sort... sorts) {
