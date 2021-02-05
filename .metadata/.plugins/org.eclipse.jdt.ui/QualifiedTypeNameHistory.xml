@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.ygj.map.model.SubKey2"/>
-<fullyQualifiedTypeName name="com.ygj.map.model.SubKey1"/>
-<fullyQualifiedTypeName name="com.mj.Times"/>
-<fullyQualifiedTypeName name="com.ygj.util.Times"/>
-<fullyQualifiedTypeName name="com.ygj.util.Times.Task"/>
-<fullyQualifiedTypeName name="com.ygj.util.Asserts"/>
-<fullyQualifiedTypeName name="com.ygj.file.Files"/>
 <fullyQualifiedTypeName name="com.ygj.file.FileInfo"/>
 <fullyQualifiedTypeName name="com.ygj.map.model.Person"/>
 <fullyQualifiedTypeName name="com.ygj.map.model.Key"/>
@@ -31,7 +24,6 @@
 <fullyQualifiedTypeName name="com.ygj.map.Map"/>
 <fullyQualifiedTypeName name="com.ygj.map.Map.Visitor"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
 <fullyQualifiedTypeName name="com.ygj.printer.BinaryTreeInfo"/>
 <fullyQualifiedTypeName name="com.ygj.heap.BinaryHeap"/>
@@ -57,7 +49,15 @@
 <fullyQualifiedTypeName name="com.ygj.cmp.bubble.BubbleSort3"/>
 <fullyQualifiedTypeName name="com.ygj.tools.Times"/>
 <fullyQualifiedTypeName name="com.ygj.cmp.bubble.SelectionSort"/>
-<fullyQualifiedTypeName name="com.ygj.Sort"/>
 <fullyQualifiedTypeName name="com.ygj.cmp.bubble.HeapSort"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="com.ygj.Sort"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.ygj.cmp.InsertionSort"/>
+<fullyQualifiedTypeName name="com.ygj.tools.Asserts"/>
 <fullyQualifiedTypeName name="com.ygj.tools.Integers"/>
+<fullyQualifiedTypeName name="com.ygj.cmp.HeapSort"/>
 </qualifiedTypeNameHistroy>

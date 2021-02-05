@@ -12,6 +12,7 @@
 		<item value="false" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="cmpCount"/>
 			<item value="createNode"/>
 			<item value="fixAfterRemove"/>
 			<item value="System.out.println"/>
@@ -26,7 +27,6 @@
 			<item value="SortedSet"/>
 			<item value="get"/>
 			<item value="index"/>
-			<item value="iterator"/>
 		</list>
 		<list key="replacehistory">
 			<item value="; "/>

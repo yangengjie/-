@@ -1,17 +1,45 @@
 package com.ygj;
 
-import com.ygj.cmp.bubble.BubbleSort1;
-import com.ygj.cmp.bubble.BubbleSort2;
-import com.ygj.cmp.bubble.BubbleSort3;
-import com.ygj.cmp.bubble.HeapSort;
-import com.ygj.cmp.bubble.SelectionSort;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
+import com.ygj.cmp.BubbleSort1;
+import com.ygj.cmp.BubbleSort2;
+import com.ygj.cmp.BubbleSort3;
+import com.ygj.cmp.HeapSort;
+import com.ygj.cmp.InsertionSort1;
+import com.ygj.cmp.InsertionSort2;
+import com.ygj.cmp.SelectionSort;
+import com.ygj.tools.Asserts;
 import com.ygj.tools.Integers;
 import com.ygj.tools.Times;
 
 public class Main {
 
 	public static void main(String[] args) {
-		test2();
+//		test2();
+		Integer[] array = Integers.random(10000, 1, 20000);
+		testSort(array, 
+//				new BubbleSort1(),
+//				new BubbleSort2(), 
+				new BubbleSort3(), 
+				new HeapSort(), 
+				new SelectionSort(),
+				new InsertionSort2());
+	}
+
+	static void testSort(Integer[] array, Sort... sorts) {
+		for (Sort sort : sorts) {
+			Integer[] newArray = Integers.copy(array);
+			sort.sort(newArray);
+			Asserts.test(Integers.isAscOrder(newArray));
+		}
+
+		Arrays.sort(sorts);
+		for (Sort sort : sorts) {
+			System.out.println(sort);
+		}
 	}
 
 	static void test3() {
