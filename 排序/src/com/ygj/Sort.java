@@ -10,6 +10,7 @@ import com.ygj.cmp.InsertionSort1;
 import com.ygj.cmp.InsertionSort2;
 import com.ygj.cmp.InsertionSort3;
 import com.ygj.cmp.SelectionSort;
+import com.ygj.cmp.ShellSort;
 
 public abstract class Sort<T extends Comparable<T>> implements Comparable<Sort> {
 	protected T[] array;
@@ -73,15 +74,20 @@ public abstract class Sort<T extends Comparable<T>> implements Comparable<Sort> 
 	}
 
 	private boolean isStable() {
-		if (this instanceof HeapSort)
-			return false;
-		if (this instanceof SelectionSort)
-			return false;
-		if (this instanceof BubbleSort1 || this instanceof BubbleSort2 || this instanceof BubbleSort3)
-			return true;
-		if (this instanceof InsertionSort1 || this instanceof InsertionSort2 || this instanceof InsertionSort3)
-			return true;
-		else
-			return false;
+//		if (this instanceof RadixSort) return true;
+//		if (this instanceof CountingSort) return true;
+		if (this instanceof ShellSort) return false;
+		if (this instanceof SelectionSort) return false;
+		Student[] students = new Student[20];
+		for (int i = 0; i < students.length; i++) {
+			students[i] = new Student(i * 10, 10);
+		}
+		sort((T[]) students);
+		for (int i = 1; i < students.length; i++) {
+			int score = students[i].score;
+			int prevScore = students[i - 1].score;
+			if (score != prevScore + 10) return false;
+		}
+		return true;
 	}
 }

@@ -53,6 +53,9 @@
 			<item value="4" key="DIALOG_Y_ORIGIN"/>
 		</section>
 	</section>
+	<section name="JavaEditorCodeMiningConfigurationBlock">
+		<item value="true" key="expanded0"/>
+	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>

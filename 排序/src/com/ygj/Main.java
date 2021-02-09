@@ -12,7 +12,10 @@ import com.ygj.cmp.HeapSort;
 import com.ygj.cmp.InsertionSort1;
 import com.ygj.cmp.InsertionSort2;
 import com.ygj.cmp.InsertionSort3;
+import com.ygj.cmp.MergeSort;
+import com.ygj.cmp.QuickSort;
 import com.ygj.cmp.SelectionSort;
+import com.ygj.cmp.ShellSort;
 import com.ygj.tools.Asserts;
 import com.ygj.tools.Integers;
 import com.ygj.tools.Times;
@@ -21,16 +24,17 @@ public class Main {
 
 	public static void main(String[] args) {
 //		test2();
-		Integer[] array = Integers.random(10000, 1, 20000);
-		testSort(array, 
-//				new BubbleSort1(),
-//				new BubbleSort2(), 
-				new BubbleSort3(), 
-				new HeapSort(), 
-				new SelectionSort(),
-				new InsertionSort2(),
-				new InsertionSort3());
-
+		Integer[] array = Integers.random(10, 1, 20);
+//		testSort(array, 
+////				new BubbleSort1(),
+////				new BubbleSort3(), 
+//				new MergeSort(),
+//				new HeapSort(), 
+//				new QuickSort(), 
+//				new ShellSort(), 
+////				new SelectionSort(),
+////				new InsertionSort2(),
+//				new InsertionSort3());
 	}
 
 	static void testSort(Integer[] array, Sort... sorts) {
@@ -38,6 +42,7 @@ public class Main {
 			Integer[] newArray = Integers.copy(array);
 			sort.sort(newArray);
 			Asserts.test(Integers.isAscOrder(newArray));
+			Integers.println(newArray);
 		}
 
 		Arrays.sort(sorts);

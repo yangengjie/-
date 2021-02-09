@@ -2,10 +2,10 @@ package com.ygj;
 
 public class Student implements Comparable<Student> {
 
-	private int age;
-	private int score;
+	public int age;
+	public int score;
 
-	public Student(int age, int score) {
+	public Student(int score, int age) {
 		this.age = age;
 		this.score = score;
 	}
